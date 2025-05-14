@@ -1,156 +1,141 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maafin Aku Ya 😢</title>
-    <style>
-      body {
-        font-family: "Comic Sans MS", cursive;
-        background-color: #fff0f5;
-        text-align: center;
-        overflow: hidden;
-        position: relative;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maafin Aku Ya 😢</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fff0f5;
+      text-align: center;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 20px;
+    }
+
+    img {
+      max-width: 80%;
+      height: auto;
+      animation: float 3s ease-in-out infinite;
+      margin-top: 20px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      color: #ff66a3;
+      margin-top: 20px;
+      font-size: 6vw;
+    }
+
+    p {
+      font-size: 4vw;
+      margin: 20px auto;
+      max-width: 500px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      font-size: 4vw;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    .yes {
+      background-color: #ff66a3;
+      color: white;
+      z-index: 1;
+    }
+
+    .no {
+      background-color: #ddd;
+      color: black;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .love-message {
+      display: none;
+      font-size: 8vw;
+      color: #ff3399;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ff80bf, 0 0 20px #ff66a3;
+      animation: bounce 1s infinite;
+      margin-top: 50px;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 20px;
+      animation: floatHeart 3s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Hai Sayang... 😔</h1>
+  <img src="https://media.tenor.com/1Zt6H3zZ3sYAAAAC/im-sorry-milk-and-mocha.gif" alt="Beruang minta maaf">
+  <p>Aku tahu kamu marah... Tapi aku bener-bener minta maaf ya 😢<br>
+  Kamu itu segalanya buat aku... ❤️</p>
+
+  <button class="btn yes" onclick="maafin()">Maafin 😘</button>
+  <button class="btn no" id="noBtn">Enggak 😡</button>
+
+  <div class="love-message" id="loveMessage">💖 I LOVE YOU 💖</div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    function maafin() {
+      const loveMessage = document.getElementById("loveMessage");
+      loveMessage.style.display = "block";
+
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.bottom = "0px";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
       }
-
-      img {
-        width: 200px;
-        margin-top: 30px;
-        animation: float 3s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      h1 {
-        color: #ff66a3;
-        margin-top: 20px;
-      }
-
-      .btn {
-        padding: 12px 25px;
-        font-size: 18px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        margin: 10px;
-        transition: 0.3s;
-      }
-
-      .yes {
-        background-color: #ff66a3;
-        color: white;
-        z-index: 1;
-      }
-
-      .no {
-        background-color: #ddd;
-        color: black;
-        position: absolute;
-        z-index: 1;
-      }
-
-      .love-message {
-        display: none;
-        font-size: 40px;
-        color: #ff3399;
-        font-weight: bold;
-        text-shadow: 0 0 10px #ff80bf, 0 0 20px #ff66a3;
-        animation: bounce 1s infinite;
-        margin-top: 50px;
-        z-index: 2;
-      }
-
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      .heart {
-        position: absolute;
-        color: red;
-        font-size: 20px;
-        animation: floatHeart 3s linear infinite;
-        opacity: 0.7;
-        pointer-events: none;
-      }
-
-      @keyframes floatHeart {
-        0% {
-          transform: translateY(0) scale(1);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-800px) scale(1.5);
-          opacity: 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Hai Sayang... 😔</h1>
-    <img
-      src="https://media.tenor.com/1Zt6H3zZ3sYAAAAC/im-sorry-milk-and-mocha.gif"
-      alt="Beruang minta maaf"
-    />
-
-    <p>
-      Aku tahu kamu marah... Tapi aku bener-bener minta maaf ya 😢<br />
-      Kamu itu segalanya buat aku... ❤️
-    </p>
-
-    <button class="btn yes" onclick="maafin()">Maafin 😘</button>
-    <button class="btn no" id="noBtn">Enggak 😡</button>
-
-    <div class="love-message" id="loveMessage">
-      💖 I LOVE YOU MOREEE SAYANGGGGG💖
-    </div>
-
-    <script>
-      const noBtn = document.getElementById("noBtn");
-
-      // Tombol enggak menghindar
-      noBtn.addEventListener("mouseover", () => {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
-      });
-
-      // Saat dimaafkan
-      function maafin() {
-        const loveMessage = document.getElementById("loveMessage");
-        loveMessage.style.display = "block";
-
-        // Buat animasi hati terbang banyak
-        for (let i = 0; i < 30; i++) {
-          const heart = document.createElement("div");
-          heart.classList.add("heart");
-          heart.innerText = "❤️";
-          heart.style.left = Math.random() * window.innerWidth + "px";
-          heart.style.bottom = "0px";
-          heart.style.fontSize = Math.random() * 20 + 20 + "px";
-          heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-          document.body.appendChild(heart);
-
-          // Hapus setelah selesai
-          setTimeout(() => {
-            heart.remove();
-          }, 4000);
-        }
-      }
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
